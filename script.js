@@ -130,8 +130,14 @@ uploadAreas.forEach(area => {
         const files = dt.files;
         
         if (files.length > 0) {
-            const inputId = area.getAttribute('onclick').match(/getElementById\('(\w+)'\)/)[1];
+            const onclickAttr = area.getAttribute('onclick');
+            const match = onclickAttr ? onclickAttr.match(/getElementById\('(\w+)'\)/) : null;
+            if (!match) return;
+            
+            const inputId = match[1];
             const input = document.getElementById(inputId);
+            if (!input) return;
+            
             input.files = files;
             
             const type = inputId === 'fsInput' ? 'financial-statement' : 'ledger';
@@ -263,20 +269,9 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault();
         document.getElementById('companyInput')?.focus();
     }
-    
-    // Ctrl/Cmd + / to focus chat
-    if ((e.ctrlKey || e.metaKey) && e.key === '/') {
-        e.preventDefault();
-        if (!isChatOpen) toggleChat();
-        document.getElementById('chatInput')?.focus();
-    }
 });
 
 // Add page load animation
 window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
+    document.body.classList.add('loaded');
 });
