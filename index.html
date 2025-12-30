@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalitics Pro - V1.0 Beta</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Finalitics Pro</span>
+                <span class="beta-badge">BETA v1.0</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#analysis" class="nav-link">Analysis</a></li>
+                <li class="nav-item"><a href="#upload" class="nav-link">Upload</a></li>
+                <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Financial Analysis Made Simple</h1>
+            <p class="hero-subtitle">Get personalized insights on any company with AI-powered analysis</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('analysis')">
+                    <i class="fas fa-chart-bar"></i> Start Analysis
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('features')">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-card">
+                <i class="fas fa-chart-pie chart-icon"></i>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">98%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">10k+</span>
+                        <span class="stat-label">Companies</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Analysis Section -->
+    <section id="analysis" class="analysis-section">
+        <div class="container">
+            <h2 class="section-title">Quick Company Analysis</h2>
+            <p class="section-subtitle">Enter a company name to get instant financial insights</p>
+            <div class="analysis-card">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-building"></i>
+                        <input type="text" id="companyInput" placeholder="Enter company name (e.g., Apple Inc., Tesla)" class="search-input">
+                        <button class="btn btn-analyze" onclick="analyzeCompany()">
+                            <i class="fas fa-search"></i> Analyze
+                        </button>
+                    </div>
+                </div>
+                <div id="analysisResult" class="analysis-result" style="display: none;">
+                    <div class="result-header">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Analysis Complete</span>
+                    </div>
+                    <div class="result-content">
+                        <p>Analysis for <strong id="analyzedCompany"></strong> has been processed.</p>
+                        <div class="metrics-grid">
+                            <div class="metric">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span class="metric-label">Revenue</span>
+                                <span class="metric-value">--</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="metric-label">Growth</span>
+                                <span class="metric-value">--</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-balance-scale"></i>
+                                <span class="metric-label">Debt Ratio</span>
+                                <span class="metric-value">--</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-star"></i>
+                                <span class="metric-label">Rating</span>
+                                <span class="metric-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2 class="section-title">Upload Financial Documents</h2>
+            <p class="section-subtitle">Upload financial statements or ledgers in any format for detailed analysis</p>
+            <div class="upload-grid">
+                <div class="upload-card">
+                    <div class="upload-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Financial Statements</h3>
+                    <p>Upload balance sheets, income statements, or cash flow reports</p>
+                    <div class="upload-area" onclick="document.getElementById('fsInput').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload or drag & drop</p>
+                        <span class="file-types">PDF, Excel, CSV, Word</span>
+                    </div>
+                    <input type="file" id="fsInput" class="file-input" accept=".pdf,.xlsx,.xls,.csv,.doc,.docx" onchange="handleFileUpload(this, 'financial-statement')">
+                    <div id="fsStatus" class="upload-status"></div>
+                </div>
+
+                <div class="upload-card">
+                    <div class="upload-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Ledgers</h3>
+                    <p>Upload general ledgers, journals, or transaction records</p>
+                    <div class="upload-area" onclick="document.getElementById('ledgerInput').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload or drag & drop</p>
+                        <span class="file-types">PDF, Excel, CSV, Word</span>
+                    </div>
+                    <input type="file" id="ledgerInput" class="file-input" accept=".pdf,.xlsx,.xls,.csv,.doc,.docx" onchange="handleFileUpload(this, 'ledger')">
+                    <div id="ledgerStatus" class="upload-status"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <p class="section-subtitle">Everything you need for comprehensive financial analysis</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>Quick Analysis</h3>
+                    <p>Get instant financial insights by simply entering a company name</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h3>Flexible Upload</h3>
+                    <p>Upload financial documents in any format - we handle the rest</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered</h3>
+                    <p>Advanced AI algorithms provide accurate and personalized insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Personalized</h3>
+                    <p>Get customized analysis tailored to your specific needs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Assistant</h3>
+                    <p>Ask questions and get instant answers from our AI chatbot</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure</h3>
+                    <p>Your data is encrypted and protected with enterprise-grade security</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chatbot Section -->
+    <section class="chatbot-section">
+        <div class="container">
+            <div class="chatbot-info">
+                <h2>Need Help?</h2>
+                <p>Our AI assistant is here to answer your questions about financial analysis</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header" onclick="toggleChat()">
+            <div class="chatbot-header-content">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <i class="fas fa-chevron-down" id="chatToggleIcon"></i>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your AI assistant. How can I help you with financial analysis today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything..." onkeypress="handleChatKeyPress(event)">
+                <button class="chat-send-btn" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-chart-line"></i> Finalitics Pro</h3>
+                    <p>Advanced financial analysis powered by AI</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#analysis">Analysis</a></li>
+                        <li><a href="#upload">Upload</a></li>
+                        <li><a href="#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@finalitics.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Finalitics Pro V1.0 Beta. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
