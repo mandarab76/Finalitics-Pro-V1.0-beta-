@@ -1,0 +1,46 @@
+name: Static Site CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Validate required files
+      run: |
+        echo "Validating project files..."
+        REQUIRED_FILES=("index.html" "styles.css" "script.js")
+        ALL_FOUND=true
+        
+        for file in "${REQUIRED_FILES[@]}"; do
+          if [ -f "$file" ]; then
+            echo "✓ $file found"
+          else
+            echo "✗ $file not found"
+            ALL_FOUND=false
+          fi
+        done
+        
+        if [ "$ALL_FOUND" = false ]; then
+          echo "Error: Some required files are missing"
+          exit 1
+        fi
+        
+        echo "All required files validated successfully!"
+        
+    - name: Check file structure
+      run: |
+        echo "Checking project structure..."
+        ls -la
+        echo "Project structure validated successfully!"
+

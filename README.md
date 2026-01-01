@@ -68,12 +68,23 @@ Financial analysis made simple with AI-powered insights. Get personalized analys
 
 ```
 Finalitics-Pro-V1.0-beta-/
+├── .github/
+│   └── workflows/
+│       ├── static-site-ci.yml    # CI workflow for validation
+│       └── deploy-pages.yml      # GitHub Pages deployment
 ├── index.html          # Main HTML file
 ├── styles.css          # All styling and responsive design
 ├── script.js           # Interactive functionality
 ├── .gitignore          # Git ignore file
 └── README.md           # This file
 ```
+
+## GitHub Actions
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+- **Static Site CI**: Automatically validates HTML, CSS, and JavaScript files on every push and pull request to the main branch
+- **GitHub Pages Deployment**: Automatically deploys the site to GitHub Pages when changes are pushed to the main branch
 
 ## Features in Detail
 
