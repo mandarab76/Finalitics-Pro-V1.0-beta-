@@ -115,6 +115,6 @@ Copyright © 2025 Finalitics Pro. All rights reserved.
 
 ## Contact
 
-- Email: info@finalitics.com
-- Phone: +1 (555) 123-4567
-- Location: San Francisco, CA
+- Email: connect@atsintegrated.com
+- Phone: +19 9833206179
+- Location: Mumbai, IN
