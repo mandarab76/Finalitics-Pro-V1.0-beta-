@@ -15,7 +15,7 @@ Finalitics Pro is a financial analysis web application powered by AI that provid
 ## Project Structure
 
 ```
-Finalitics-Pro-V1.0-beta-/
+.
 ├── .github/
 │   ├── workflows/
 │   │   ├── static-site-ci.yml      # CI workflow for validation
@@ -25,7 +25,8 @@ Finalitics-Pro-V1.0-beta-/
 ├── styles.css                      # All styling and responsive design
 ├── script.js                       # Interactive functionality
 ├── .gitignore                      # Git ignore file
-└── README.md                       # Project documentation
+├── README.md                       # Project documentation
+└── financialintellectai-(v1.-0).zip # Archive of previous version
 ```
 
 ## Code Conventions
